@@ -1,7 +1,7 @@
  require("mason").setup()
  require("mason-lspconfig").setup()
 
-
+--require('rust-tools').setup({})
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -18,9 +18,9 @@ local handlers = {
 		require("lspconfig")[server_name].setup {}
 	end,
 	-- Next, you can provide targeted overrides for specific servers.
-	["rust_analyzer"] = function ()
+	--["rust_analyzer"] = function ()
 	--	require("rust-tools").setup {}
-	end,
+	--end,
 	["lua_ls"] = function ()
 		local lspconfig = require("lspconfig")
 		lspconfig.lua_ls.setup {
@@ -39,7 +39,7 @@ local handlers = {
 require("mason-lspconfig").setup({ handlers = handlers })
 
 -- alt 2. or call the .setup_handlers() function.
-require("mason-lspconfig").setup_handlers(handlers)
+--require("mason-lspconfig").setup_handlers(handlers)
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
